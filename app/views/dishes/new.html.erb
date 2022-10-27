@@ -1,0 +1,40 @@
+<%=render "shared/navbar"%>
+<h1>new dishes page </h1>
+<h3 class="text-center mt-2">Welcome To Restaurant App</h3>
+<div class="mt-2 form">
+  <%= form_with model: @dish do |form| %>
+    <div class="field form-group form-g">       
+      <div>
+        <h2 class="text-primary text-center">Add Your Dish<h2>
+      </div>
+
+      <div>
+        <%= form.label :dish_name,class:'form-label'%><br>
+        <%= form.text_field :name,class:'form-control'%>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :dish_photo,class:'form-label'%>
+        <%= form.file_field :dish_image,class:'form-control'%>
+      </div>
+      <br><%= form.collection_select :restaurant_id, current_admin.restaurants.order(:name),:id,:name,class:'form-select'%>
+       <div>
+        <%= form.label :dish_price,class:'form-label'%><br>
+        <%= form.text_field :price,class:'form-control'%>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :description,class:'form-label'%>
+        <%= form.text_area :description,class:'form-control' %>      
+      </div>
+      <br>
+
+      <div>
+        <%= form.submit class: 'btn btn-primary'%>
+      </div>
+      
+  <%end%>
+</div>
+<%=render "shared/footer"%>

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">RestaurantApp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%if user_signed_in?%>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <%elsif admin_signed_in?%>
+            <a class="nav-link active" aria-current="page" href="/admins">Home</a>
+          <%else%>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <%end%>
+        </li>
+        <%if user_signed_in?%>
+          <li>
+            <a class="nav-link active" aria-current="page" href="/orders">MyOrders</a>
+          </li>
+        <%end%>
+        <%if user_signed_in?%>
+          <li class="nav-link text-dark" ><%= link_to "LogOutuser", destroy_user_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
+            method: :delete,
+            confirm: "Are you sure?"                                   
+          }  %></li>
+        <%elsif admin_signed_in?%>
+        <li>
+        <a class="nav-link active" aria-current="page" href="/restaurants/review">Restaurant Review</a>
+        </li>
+          <li class="nav-link text-dark" ><%= link_to "LogOutadmin", destroy_admin_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
+            method: :delete,
+            confirm: "Are you sure?"                                   
+          }  %></li>
+        <%else%>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/admins">Admin Login</a></li>
+              
+              <li><a class="dropdown-item" href="/users">User Login</a></li>
+            </ul>
+          </li>
+        <%end%>
+      </ul>
+      <form class="d-flex">
+        <% if user_signed_in?%>
+          <%=current_user.name%>
+        <%elsif admin_signed_in?%>
+          <%=current_admin.name%>
+        <%end%>
+      </form>
+    </div>
+  </div>
+</nav>

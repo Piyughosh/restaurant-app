@@ -1,0 +1,40 @@
+<%=render "shared/navbar"%>
+<div class="container-fluid">
+  <div class="row mx-0">
+    <div class="col-4">
+      <div style="height:800px; background-color:white">
+        <%=image_tag(@dish.dish_image, size:"480x480")%>
+        <h3 class="text-center">Discription: <%=@dish.description%></h3>
+      </div>
+    </div>
+    <div class="col-4">
+      <div style="height:800px;margin-left:100px; background-color:white">
+        <div class="ps-5 mt-5">
+          <h1><%=@dish.name%></h1>
+          <h3><%=@dish.price%></h3>
+          <%=link_to "Buy", new_order_path(:order =>{:dish_id =>@dish.id, :name =>@dish.name, :price =>@dish.price, :description =>@dish.description, :restaurant_id =>@dish.restaurant_id}),class:'btn btn-primary',style:'text-decoration:none;'%>
+        </div>
+      </div>
+    </div>
+<%if user_signed_in?%>
+    <div class="col-4 bg-danger"> 
+      <h2 class="text-center text-dark"><span class="border-bottom">Dish Reviews</span></h2>
+      <%@dish.reviews.each do |dish|%>
+        <h6><%=dish.review%></h6>
+        <hr>
+      <%end%>
+      <%=form_with model: [@dish, @dish.reviews.build] do |form| %>      
+        <div class=text-center mt-2>
+        
+          <%=form.text_field :review, class:'form-control border-bottom'%>
+        </div>
+        <div class="text-center">
+          <%=form.submit 'Add Review', class:'btn btn-primary mt-2'%>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+    </div>
+  </div>
+</div>
+<%=render "shared/footer"%>

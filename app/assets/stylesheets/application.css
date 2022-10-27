@@ -1,0 +1,164 @@
+.footerbox {
+  background-color: rgba(0, 0, 0, 0.829);
+  padding: 45px;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox2 h5 {
+  color: yellow;
+  border-radius: 85px;
+  text-align: center;
+}
+.footerbox .footerBoxOne .footerRowBox2 li {
+  margin-top: 1em;
+  text-align: center;
+  list-style-type: none;
+}
+.footerbox .footerBoxOne .footerRowBox2 li a {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox2 li a:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+  transform: scale(1.2);
+}
+.footerbox .footerBoxOne .footerRowBox2 li p {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox2 li p:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+}
+.footerbox .footerBoxOne .footerRowBox3 h5 {
+  color: yellow;
+  border-radius: 85px;
+  text-align: center;
+}
+.footerbox .footerBoxOne .footerRowBox3 li {
+  margin-top: 1em;
+  text-align: center;
+  list-style-type: none;
+}
+.footerbox .footerBoxOne .footerRowBox3 li a {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox3 li a:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+  transform: scale(1.2);
+}
+.footerbox .footerBoxOne .footerRowBox3 li p {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox3 li p:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+}
+.footerbox .footerBoxOne .footerRowBox4 h5 {
+  color: yellow;
+  border-radius: 85px;
+  text-align: center;
+}
+.footerbox .footerBoxOne .footerRowBox4 li {
+  margin-top: 1em;
+  text-align: center;
+  list-style-type: none;
+}
+.footerbox .footerBoxOne .footerRowBox4 li a {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox4 li a:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+  transform: scale(1.2);
+}
+.footerbox .footerBoxOne .footerRowBox4 li p {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox4 li p:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+}
+.footerbox .footerBoxOne .footerRowBox5 h5 {
+  color: yellow;
+  border-radius: 85px;
+  text-align: center;
+}
+.footerbox .footerBoxOne .footerRowBox5 li {
+  margin-top: 1em;
+  text-align: center;
+  list-style-type: none;
+}
+.footerbox .footerBoxOne .footerRowBox5 li a {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox5 li a:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+  transform: scale(1.2);
+}
+.footerbox .footerBoxOne .footerRowBox5 li p {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxOne .footerRowBox5 li p:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+}
+.footerbox .footerBoxOne .footerRowBox5 {
+  text-align: center;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 20px;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+  transition: 200ms;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-google {
+  background: #dd4b39;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-instagram {
+  background: #125688;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+.footerbox .footerBoxOne .footerRowBox5 .soialMediaIcon .fa-skype {
+  background: #00aff0;
+  color: white;
+}
+.footerbox .footerBoxTwo h5 {
+  color: yellow;
+}
+.footerbox .footerBoxTwo .footerRowBox7 .makeMoney p {
+  color: white;
+  text-decoration: none;
+}
+.footerbox .footerBoxTwo .footerRowBox7 .makeMoney p:hover {
+  color: rgba(247, 37, 9, 0.76);
+  text-shadow: 2px 2px 15px;
+}/*# sourceMappingURL=application.css.map */

@@ -1,0 +1,21 @@
+<%=render "shared/navbar"%>
+<h1>order show</h1>
+<% if admin_signed_in?%>
+  <h1>Admin section</h1>
+<%elsif user_signed_in? %>
+  <h1 class="text-center"> User section Order details</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <%=image_tag(@dishes.find(@order.dish_id).dish_image, size:"260x180")%>
+        <h2 class="mt-2">Item :<%=@order.name%></h2>
+        <h5 class="mt-1">Price :<%=@order.price%></h5>
+        <h5>Restaurant :<%=@restaurants.find(@order.restaurant_id).name%></h5>
+        <h5>Status :shipped</h5>
+        <%=link_to "Label", new_order_path(:order =>{:dish_id => params[:id], :name =>@order.name, :price =>@order.price, :description =>@order.description, :restaurant_id =>@order.restaurant_id})%>      
+      </div>
+    </div>
+  </div>
+<%end%>
+
+<%=render "shared/footer"%>

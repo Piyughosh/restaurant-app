@@ -1,0 +1,42 @@
+<%=render "shared/navbar"%>
+<h1 class="text-center"><%=@restaurant.name%></h1>
+<div class="container mt-3">
+  <div class="row mx-0 mt-5">
+    <div class="col-8">
+      <%@restaurant.dishes.each do |d|%>
+        <div class="col text-center">
+          <div class="card" style="width: 18rem;">
+          <a href="/dishes/<%=d.id%>" style="text-decoration:none;color:black">
+            <img src="<%= url_for(d.dish_image)%>" class="card-img-top" alt="..."width="50" height="200">
+            <div class="card-body">
+              <h5 class="card-title"><%=d.name%></h5>
+              <h3 class="card-title"><%=d.price%></h3>
+              <p class="card-text"><%=d.description%></p>    
+            </div>
+          </a>
+          </div>
+        </div>
+      <%end%>
+    </div> 
+    
+    <%if user_signed_in?%>
+      <div class="col-4 ">
+      <h2 class="text-center text-dark mb-2"><span class="border-bottom text-danger">Restaurant Reviews</span></h2>
+        <%@restaurant.reviews.each do |dish|%>
+          <h6><%=dish.review%></h6>
+          <hr>
+        <%end%>
+        <%= form_with model: [@restaurant, @restaurant.reviews.build] do |form| %>      
+          <div class=text-center mt-2>
+          
+            <%=form.text_field :review, class:'form-control border-bottom'%>
+          </div>
+          <div class="text-center">
+            <%=form.submit 'Add Review', class:'btn btn-primary mt-2'%>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+</div>
+<%=render "shared/footer"%>

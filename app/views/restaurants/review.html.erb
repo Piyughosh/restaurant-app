@@ -1,0 +1,8 @@
+<%=render "shared/navbar"%>
+<div class="mx-2">
+<h1><span class="border-bottom">Review</span></h1>
+  <%@reviews.each do |review|%>
+    <h6><%=review.review%></h6>
+  <%end%>
+</div>
+<%=render "shared/footer"%>
