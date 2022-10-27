@@ -1,7 +1,17 @@
 <%=render "shared/navbar"%>
 <h1>order show</h1>
 <% if admin_signed_in?%>
-  <h1>Admin section</h1>
+<div class="container">
+<div class="row">
+  <div class="col text-center">
+    <%=image_tag(@dishes.find(@order.dish_id).dish_image, size:"260x180")%>
+    <h2 class="mt-2">Item :<%=@order.name%></h2>
+    <h5 class="mt-1">Price :<%=@order.price%></h5>
+    <h5>Restaurant :<%=@restaurants.find(@order.restaurant_id).name%></h5>
+    <h5>Status :shipped</h5>     
+  </div>
+</div>
+</div>
 <%elsif user_signed_in? %>
   <h1 class="text-center"> User section Order details</h1>
   <div class="container">
@@ -17,5 +27,4 @@
     </div>
   </div>
 <%end%>
-
 <%=render "shared/footer"%>

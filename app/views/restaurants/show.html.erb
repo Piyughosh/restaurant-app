@@ -22,8 +22,8 @@
     <%if user_signed_in?%>
       <div class="col-4 ">
       <h2 class="text-center text-dark mb-2"><span class="border-bottom text-danger">Restaurant Reviews</span></h2>
-        <%@restaurant.reviews.each do |dish|%>
-          <h6><%=dish.review%></h6>
+        <%@restaurant.reviews.each do |rest|%>
+          <h6><%=rest.review%></h6>
           <hr>
         <%end%>
         <%= form_with model: [@restaurant, @restaurant.reviews.build] do |form| %>      

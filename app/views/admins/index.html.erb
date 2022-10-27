@@ -1,7 +1,27 @@
 <%=render "shared/navbar"%>
-<h1 class="text-center mt-2">admin index page <span><%=current_admin.restaurants.find_by(admin_id: current_admin).name%></span></h1>
+<h1 class="mt-2">Dashboard</h1>
+<%=link_to "Create new restaurant", new_restaurant_path%><br>
 <%=link_to "Add Dish", new_dish_path%>
- 
+<h1 class="text-center mt-2">My restaurants</h1>
+<table class="container table table-hover"> 
+  <thead>
+    <tr>
+      <th>Restaurant Number</th>
+      <th>Edit Action</th>
+      <th>Show Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@rest.each do |res|%>
+    <tr>
+      <td><%= res.name %></td>
+      <td><%=link_to "edit", edit_restaurant_path(res)%></td>
+      <td><%=link_to "show", restaurant_path(res)%></td>  
+    </tr> 
+  <%end%>
+  </tbody>
+</table><br>
+<h1 class="text-center mt-2">Orders Details</h1>
 <table class="container table table-hover"> 
   <thead>
     <tr class="text-center">
@@ -10,6 +30,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Customer</th>
+      <th scope="col">Restaurant_Name</th>
       <th>Action<th>
     </tr>
   </thead>
@@ -21,11 +42,11 @@
       <td><%=order.name%></td>
       <td><%=order.price%></td>
       <td><%=@users.find(order.user_id).name%></td>
+      <td><%=@restu.find(order.restaurant_id).name%></td>
       <td><%=link_to "view", order%></td>
   </tr>
   <% i = i+1%>
   <%end%>
-
   </tbody>
 </table>
 <%=render "shared/footer"%>

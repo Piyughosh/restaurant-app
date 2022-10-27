@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
   end
  
   def create
-    debugger
     if params[:dish_id].nil?
       @restaurant = Restaurant.find(params[:restaurant_id])
       @review = @restaurant.reviews.create(reviews_params)

@@ -1,6 +1,4 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :review]
-  before_action :authenticate_admin!, except: :review
   before_action :check_retaurant, only: :index  
   def index
     @q = Restaurant.ransack(params[:q])
@@ -37,7 +35,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
 
-    if @restaurant.update(article_params)
+    if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else
       render :edit, status: :unprocessable_entity

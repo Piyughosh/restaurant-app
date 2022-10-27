@@ -21,22 +21,21 @@
           </li>
         <%end%>
         <%if user_signed_in?%>
-          <li class="nav-link text-dark" ><%= link_to "LogOutuser", destroy_user_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
+          <li class="nav-link text-dark" ><%= link_to "LogOu_tuser", destroy_user_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
             method: :delete,
             confirm: "Are you sure?"                                   
           }  %></li>
         <%elsif admin_signed_in?%>
         <li>
-        <a class="nav-link active" aria-current="page" href="/restaurants/review">Restaurant Review</a>
         </li>
-          <li class="nav-link text-dark" ><%= link_to "LogOutadmin", destroy_admin_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
+          <li class="nav-link text-dark" ><%= link_to "LogOut_admin", destroy_admin_session_path, class:'text-dark link-to',style:'text-decoration:none;', data:{
             method: :delete,
             confirm: "Are you sure?"                                   
           }  %></li>
         <%else%>
           <li class="nav-item dropdown">
             <a class="nav-link" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Login
+              Account
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/admins">Admin Login</a></li>
@@ -48,9 +47,9 @@
       </ul>
       <form class="d-flex">
         <% if user_signed_in?%>
-          <%=current_user.name%>
+          <%=current_user.email%>
         <%elsif admin_signed_in?%>
-          <%=current_admin.name%>
+          <%=current_admin.email%>
         <%end%>
       </form>
     </div>
