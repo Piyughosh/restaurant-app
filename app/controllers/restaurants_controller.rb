@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
-  before_action :check_retaurant, only: :index  
+  before_action :check_retaurant, only: :index
   def index
     @q = Restaurant.ransack(params[:q])
-    if params[:q].present?
-      @restaurants = Restaurant.includes(:dishes).where(dishes: { name: params[:q]['name_cont']})
-    else
-      @restaurants = Restaurant.all
-    end
-    
+    @restaurants = if params[:q].present?
+                     Restaurant.includes(:dishes).where(dishes: { name: params[:q]['name_cont'] })
+                   else
+                     Restaurant.all
+                   end
   end
 
   def show
@@ -48,19 +49,27 @@ class RestaurantsController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
   def review
-    @reviews = Review.where(comment_type:"Restaurant")
+    @reviews = Review.where(comment_type: 'Restaurant')
   end
 
- private
- def restaurant_params
-  params.require(:restaurant).permit(:name, :description, :email, :address, :visibility, :restaurant_image)
- end
- def check_retaurant
-  if admin_signed_in? && Restaurant.find_by(admin_id:current_admin.id).nil?     
-    redirect_to new_restaurant_path  
-  elsif admin_signed_in?
-    redirect_to admins_path
+  def restaurant_status
+    @restaurant = Restaurant.find(params[:id])
+    RestaurantStatusJob.set(wait: 5.seconds).perform_later(@restaurant)
   end
- end
+
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :description, :email, :address, :visibility, :restaurant_image)
+  end
+
+  def check_retaurant
+    if admin_signed_in? && Restaurant.find_by(admin_id: current_admin.id).nil?
+      redirect_to new_restaurant_path
+    elsif admin_signed_in?
+      redirect_to admins_path
+    end
+  end
 end

@@ -5,7 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :description
       t.string :address
       t.string :email
-      t.boolean :visibility
+      t.boolean :status
       t.belongs_to :admin
       t.timestamps
     end

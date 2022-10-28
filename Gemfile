@@ -6,7 +6,11 @@ ruby '3.0.3'
 gem 'devise'
 
 gem 'ransack'
-
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'rubocop-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record

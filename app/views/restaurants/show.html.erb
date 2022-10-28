@@ -1,5 +1,17 @@
 <%=render "shared/navbar"%>
+<span class= 'text-right <%= @restaurant.status ? 'badge bg-primary' : 'badge bg-secondary' %>' style="margin-left:2%"><%= @restaurant.status ? 'Open Now' : 'Closed' %></span>
 <h1 class="text-center"><%=@restaurant.name%></h1>
+<%  if admin_signed_in? %>
+  <div class="text-center">
+    <%= button_tag 'Update Status', class: ' float-none btn btn-primary',
+        data: {
+          remote: true,
+          url: url_for(action: :restaurant_status, id: @restaurant.id),
+          method: "POST"
+        }, onclick:"alert('Restaurant staus will be updated after 5 minutes!')" %>
+  </div>
+<% end %>
+ 
 <div class="container mt-3">
   <div class="row mx-0 mt-5">
     <div class="col-8">

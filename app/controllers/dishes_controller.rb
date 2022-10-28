@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DishesController < ApplicationController
   before_action :authenticate_user!, only: :show
   def index
@@ -37,15 +39,15 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    @dish = Dish.fiRestaurantnd(params[:id])
+    @dish = Dish.find(params[:id])
     @dish.destroy
 
     redirect_to root_path, status: :see_other
   end
 
- private
- def dish_params
-  params.require(:dish).permit(:name, :description, :restaurant_id , :price, :dish_image)
- end
+  private
 
+  def dish_params
+    params.require(:dish).permit(:name, :description, :restaurant_id, :price, :dish_image)
+  end
 end
