@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RestaurantsController < ApplicationController
   before_action :check_retaurant, only: :index
   def index

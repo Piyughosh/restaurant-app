@@ -2,7 +2,8 @@
 <div class="mx-2">
 <h1><span class="border-bottom">Review</span></h1>
   <%@reviews.each do |review|%>
-    <h6><%=review.review%></h6>
+    <span class="text-primary"><%=fetch_email(review.user_id)%></span>
+    <h6><%=review.review%>(<span><%= Restuarant.find(review.restauraant_id).name %><s/pan>)</h6>
   <%end%>
 </div>
 <%=render "shared/footer"%>

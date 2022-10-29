@@ -10,11 +10,14 @@
           <%if user_signed_in?%>
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           <%elsif admin_signed_in?%>
-            <a class="nav-link active" aria-current="page" href="/admins">Home</a>
+            <a class="nav-link active" aria-current="page" href="/admins">Home</a>            
           <%else%>
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           <%end%>
         </li>
+        <% if admin_signed_in? %>
+          <a class="nav-link active" aria-current="page" href="/restaurants/review">Reviews</a>
+        <% end %>
         <%if user_signed_in?%>
           <li>
             <a class="nav-link active" aria-current="page" href="/orders">MyOrders</a>
