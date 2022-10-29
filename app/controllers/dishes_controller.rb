@@ -31,7 +31,9 @@ class DishesController < ApplicationController
   def update
     @dish = Dish.find(params[:id])
 
-    if @dish.update(article_params)
+    if @dish.update(dish_params)
+      @review = @dish.reviews.build(review_params)
+      @review.save
       redirect_to @dish
     else
       render :edit, status: :unprocessable_entity
@@ -46,6 +48,10 @@ class DishesController < ApplicationController
   end
 
   private
+
+  def review_params
+    params.require(:dish).require(:review).permit(:user_id, :review)
+  end
 
   def dish_params
     params.require(:dish).permit(:name, :description, :restaurant_id, :price, :dish_image)

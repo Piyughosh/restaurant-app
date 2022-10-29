@@ -24,15 +24,17 @@
         <h6><%=r.review%></h6>
         <hr>
       <%end%>
-      <%=form_with model: [@dish, @dish.reviews.build] do |form| %>
-        <%=form.number_field :user_id , type: :hidden, value: current_user.id %>   
-        <div class=text-center mt-2>        
-          <%=form.text_field :review, class:'form-control border-bottom'%>
+      <%= form_for @dish do |form| %>
+        <%=  form.fields_for :review do |review_form | %>
+          <%= review_form.hidden_field :user_id, value: current_user.id %>   
+        <div class=text-center mt-2>          
+          <%=review_form.text_field :review, class:'form-control border-bottom'%>
         </div>
-        <div class="text-center">          
-          <%=form.submit 'Add Review', class:'btn btn-primary mt-2',remote: true%>
+          <% end%>
+          <div class="text-center">
+          <%=form.submit 'Add Review', class:'btn btn-primary mt-2'%>
         </div>
-      <%end%>
+      <% end %>
     </div>
   <%end%>
     </div>

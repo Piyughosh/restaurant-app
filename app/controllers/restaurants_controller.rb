@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
   before_action :check_retaurant, only: :index
   def index
@@ -35,6 +37,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update(restaurant_params)
+      @review = @restaurant.reviews.build(review_params)
+      @review.save
       redirect_to @restaurant
     else
       render :edit, status: :unprocessable_entity
@@ -61,6 +65,10 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :description, :email, :address, :visibility, :restaurant_image)
+  end
+
+  def review_params
+    params.require(:restaurant).require(:review).permit(:user_id, :review)
   end
 
   def check_retaurant
