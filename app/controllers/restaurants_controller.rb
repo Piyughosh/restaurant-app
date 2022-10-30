@@ -33,8 +33,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update(restaurant_params)
-      @review = @restaurant.reviews.build(review_params)
-      @review.save
+      if params[:restaurant][:review].present?
+        @review = @restaurant.reviews.build(review_params)
+        @review.save
+      end
       redirect_to @restaurant
     else
       render :edit, status: :unprocessable_entity
@@ -49,12 +51,12 @@ class RestaurantsController < ApplicationController
   end
 
   def review
-    @reviews = Restaurant.where(admin_id: current_admin.id).each do |item| item.reviews end
+    @restaurants = Restaurant.where(admin_id: current_admin.id)
   end
 
   def restaurant_status
     @restaurant = Restaurant.find(params[:id])
-    RestaurantStatusJob.set(wait: 5.seconds).perform_later(@restaurant)
+    RestaurantStatusJob.set(wait: 5.minutes).perform_later(@restaurant)
   end
 
   private

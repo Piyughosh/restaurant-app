@@ -1,12 +1,11 @@
 <%=render "shared/navbar"%>
 <div class="mx-2">
-<% debugger %>
 <h1><span class="border-bottom">Review</span></h1>
-  <%@reviews.each do |review|%>
-    <%review.reviews.each do |r|%>
+  <%@restaurants.each do |restaurant|%>
+    <%restaurant.reviews.each do |review|%>
       <span class="text-primary">
-      <span> <%= fetch_email(r.user_id)%> </span>
-    <h6 class="text-dark"> <%= r.review %> (<span class="text-danger"><%= restaurant_name(r.id) %> </span>)</h6>
+      <span> <%= fetch_email(review.user_id)%> </span>
+    <h6 class="text-dark"> <%= review.review %> (<span class="text-danger"><%= restaurant_name(review.id) %> </span>)</h6>
     <% end %>
   <%end%>
 </div>
