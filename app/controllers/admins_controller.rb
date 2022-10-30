@@ -6,6 +6,6 @@ class AdminsController < ApplicationController
     @rest = current_admin.restaurants    
   end
   def show
-    @admin_order = Order.find(params[:id])
+    @dishes = Dish.where(restaurant_id:(params[:id]))
   end
 end

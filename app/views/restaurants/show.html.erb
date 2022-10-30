@@ -16,7 +16,7 @@
   <div class="row mx-0 mt-5">
     <div class="col-8">
       <%@restaurant.dishes.each do |d|%>
-        <div class="col text-center">
+        <div class="row text-center">        
           <div class="card" style="width: 18rem;">
           <a href="/dishes/<%=d.id%>" style="text-decoration:none;color:black">
             <%= image_tag(d.dish_image, size:'284x250', class:'card-img-top')%>
@@ -35,6 +35,7 @@
       <div class="col-4 ">
       <h2 class="text-center text-dark mb-2"><span class="border-bottom text-danger">Restaurant Reviews</span></h2>
         <%@restaurant.reviews.each do |rest|%>
+          <span class="text-primary"><%= fetch_email(rest.user_id) %></span>
           <h6><%=rest.review%></h6>
           <hr>
         <%end%>

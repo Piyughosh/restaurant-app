@@ -18,6 +18,7 @@
       <td><%= res.name %></td>
       <td><%=link_to "edit", edit_restaurant_path(res)%></td>
       <td><%=link_to "show", restaurant_path(res)%></td>  
+      <td><%=link_to "show", admin_path(res)%></td>  
     </tr> 
   <%end%>
   </tbody>

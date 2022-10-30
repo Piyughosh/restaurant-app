@@ -1,1 +1,18 @@
-<h1>admin show page</h1>
+<%= render "shared/navbar" %>
+<h1 class="text-center my-3"><%= fetch_restaurant_name(@dishes.first.restaurant_id) %></h1>
+<div class="container">
+  <div class="row">
+    <%@dishes.each do |dish| %>
+      <div class="col-lg-3 mt-4 text-center">
+        <div  class="card" style="width: 15rem;">
+          <%=image_tag(dish.dish_image, size:"235x220")%>
+          <div class="card-body">
+            <h5 class="card-title"><%=dish.name%></h5>
+            <h3 class="text-center">Discription: <%=dish.description%></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render "shared/footer"%>
