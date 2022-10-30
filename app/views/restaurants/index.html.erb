@@ -7,20 +7,22 @@
     <%= f.submit class:''%>    
   <% end %>
 </div>
+<div class="container">
 <div class="row mx-0">
   <% @restaurants.each do |restaurant| %>
     <div class="col text-center">
       <div class="card" style="width: 18rem;">
-      <a href="/restaurants/<%= restaurant.id%>" style="text-decoration:none;color:black">
-        <img src="<%= url_for(restaurant.restaurant_image)%>" class="card-img-top" alt="..."width="50" height="200">
+      <%= link_to restaurant_path(restaurant), class:'text-decoration-none text-dark' do %> 
+        <%= image_tag(restaurant.restaurant_image, size:'280x250') if restaurant.restaurant_image.attached? %> 
         <div class="card-body">
           <h5 class="card-title"><%=restaurant.name%></h5>
           <p class="card-text"><%=restaurant.description%></p>    
         </div>
-      </a>
+      <% end %>
       </div>
     </div>
   <%end%>
+</div>
 </div>
 
 <%= render "shared/footer"%>

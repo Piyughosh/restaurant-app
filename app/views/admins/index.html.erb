@@ -31,19 +31,19 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Customer</th>
-      <th scope="col">Restaurant_Name</th>
+      <th scope="col">Restaurant Name</th>
       <th>Action<th>
     </tr>
   </thead>
   <% i = 0%>
   <%@admin_orders.each do |order|%>
     <tr class="text-center">
-      <td><%=i+1%></td>     
-      <td><img src="<%= url_for(@dishes.find(order.dish_id).dish_image)%>" alt="..."width="50" height="50"></td>
+      <td><%=i+1%></td>
+      <td><%= image_tag(fetch_image(order.dish_id), size:'50x50') %></td>
       <td><%=order.name%></td>
       <td><%=order.price%></td>
-      <td><%=@users.find(order.user_id).name%></td>
-      <td><%=@restu.find(order.restaurant_id).name%></td>
+      <td><%= fetch_user_name(order.user_id) %></td>
+      <td><%= fetch_restaurant_name(order.restaurant_id) %></td>
       <td><%=link_to "view", order%></td>
   </tr>
   <% i = i+1 %>

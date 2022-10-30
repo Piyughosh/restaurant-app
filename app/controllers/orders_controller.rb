@@ -2,12 +2,8 @@ class OrdersController < ApplicationController
   after_action :create, only: :new
   def index
     @orders =Order.where(user_id:current_user)
-    @dishes =Dish.all
-    @restaurants = Restaurant.all
   end
   def show
-    @restaurants = Restaurant.all
-    @dishes =Dish.all
     @order = Dish.find(params[:id])
     @reviews = Review.all
     @order = Order.find(params[:id])

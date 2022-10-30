@@ -19,7 +19,7 @@
         <div class="col text-center">
           <div class="card" style="width: 18rem;">
           <a href="/dishes/<%=d.id%>" style="text-decoration:none;color:black">
-            <img src="<%= url_for(d.dish_image)%>" class="card-img-top" alt="..."width="50" height="200">
+            <%= image_tag(d.dish_image, size:'284x250', class:'card-img-top')%>
             <div class="card-body">
               <h5 class="card-title"><%=d.name%></h5>
               <h3 class="card-title"><%=d.price%></h3>

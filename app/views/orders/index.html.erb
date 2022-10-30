@@ -1,5 +1,5 @@
 <%=render "shared/navbar"%>
-<h1 class="text-center">Order index page</h1>
+<h1 class="text-center">My Orders</h1>
  
 <table class="container table table-hover"> 
   <thead>
@@ -13,18 +13,18 @@
     </tr>
   </thead>
   <tbody>
-  <%i=0%>
-  <%@orders.each do |order|%>
+  <% i=0 %>
+  <% @orders.each do |order| %>
     <tr class="text-center">
-      <td><%=i+1%></td>     
-      <td><img src="<%= url_for(@dishes.find(order.dish_id).dish_image)%>" alt="..."width="50" height="50"></td>
-      <td><%=order.name%></td>
-      <td><%=order.price%></td>
-      <td><%=@restaurants.find(order.restaurant_id).name%></td>
-      <td><a href="/orders/<%=order.dish_id%>">view</a></td>
+      <td><%= i+1 %></td>     
+      <td><%= image_tag(fetch_image(order.dish_id), size:'50x50') %></td>
+      <td><%= order.name %></td>
+      <td><%= order.price %></td>
+      <td><%= fetch_name(order.restaurant_id) %></td>
+      <td><%= link_to "view", order_path(order.dish_id) %></td>
     </tr>
-    <%i=i+1%>
-  <%end%>
+    <% i=i+1 %>
+  <% end %>
   </tbody>
 </table>
 <%= render "shared/footer"%>
