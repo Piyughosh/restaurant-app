@@ -49,7 +49,7 @@ class RestaurantsController < ApplicationController
   end
 
   def review
-    @reviews = Review.where(comment_type: 'Restaurant')
+    @reviews = Restaurant.where(admin_id: current_admin.id).each do |item| item.reviews end
   end
 
   def restaurant_status
