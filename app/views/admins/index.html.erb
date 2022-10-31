@@ -1,7 +1,13 @@
 <%=render "shared/navbar"%>
 <h1 class="mt-2">Dashboard</h1>
+<div class="d-flex justify-content-center">
+<%= form_with model:@restaurants do |form| %>
+  <%= form.collection_select :restaurant_id, current_admin.restaurants.order(:name),:id, :name,class:'form-select'%>
+<% end %>
+</div>
 <%=link_to "Create new restaurant", new_restaurant_path, class:'btn btn-primary mx-2'%>
 <%=link_to "Add Dish", new_dish_path, class:'btn btn-primary mx-2'%>
+<%=render "shared/side_nav"%>
  
 <h1 class="text-center mt-2">My restaurants</h1>
 <table class="container table table-hover"> 
@@ -17,7 +23,7 @@
     <tr>
       <td><%= res.name %></td>
       <td><%=link_to "edit", edit_restaurant_path(res)%></td>
-      <td><%=link_to "show", restaurant_path(res)%></td>   
+      <td><%=link_to "show", admin_path(res)%></td>
     </tr> 
   <%end%>
   </tbody>
