@@ -32,9 +32,10 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     
     if @dish.update(dish_params)
-      @review = @dish.reviews.build(review_params)
-      @review.save
-
+      if params[:dish][:review].present?
+        @review = @dish.reviews.build(review_params)
+        @review.save
+      end
       redirect_to @dish
     else
       render :edit, status: :unprocessable_entity

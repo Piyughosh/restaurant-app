@@ -4,7 +4,7 @@ module AdminsHelper
   end
 
   def fetch_user_name(id)
-    User.find(id).name
+    User.find(id).email
   end
 
   def fetch_restaurant_name(id)
