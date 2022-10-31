@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     @orders =Order.where(user_id:current_user)
   end
   def show
-    @order = Dish.find(params[:id])
+    @order = Order.find(params[:id])
     @reviews = Review.all
     @order = Order.find(params[:id])
   end 

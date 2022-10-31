@@ -21,7 +21,7 @@
       <td><%= order.name %></td>
       <td><%= order.price %></td>
       <td><%= fetch_name(order.restaurant_id) %></td>
-      <td><%= link_to "view", order_path(order.dish_id) %></td>
+      <td><%= link_to "view", order_path(order.id) %></td>
     </tr>
     <% i=i+1 %>
   <% end %>
